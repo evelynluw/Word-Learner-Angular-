@@ -1,0 +1,15 @@
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3em auto;
+  width: 20em;
+  max-width: 90%;
+  height: 3em;
+}
+
+.input__field {
+  width: 190px;
+  margin-right: 0.5em;
+}

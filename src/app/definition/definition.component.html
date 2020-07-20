@@ -1,0 +1,32 @@
+<mat-card class="definition">
+  <mat-card-title class="definition__title">{{ word }}</mat-card-title>
+  <mat-card-content>
+    <!-- <h5 class="definition__part-of-speech">{{ "noun." | uppercase }}</h5>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+    type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+    Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
+    Lorem Ipsum. -->
+    <!-- {{ this.definition | json }} -->
+    <ng-container *ngIf="!this.definition.error && !!this.definition['0'].fl; else errorBlock">
+      <ng-container *ngFor="let defGroup of getValues(this.definition)">
+        <h5 class="definition__part-of-speech" *ngIf="defGroup?.fl">{{ defGroup.fl | uppercase }}</h5>
+        <!-- {{ defGroup.shortdef | json}} -->
+        <ng-container class="definition__def" *ngIf="defGroup?.shortdef?.length > 1; else elseBlock">
+          <ol type='i'>
+            <li *ngFor="let shortDef of defGroup.shortdef">
+              {{ shortDef }}
+            </li>
+          </ol>
+        </ng-container>
+        <ng-template #elseBlock>
+          {{ defGroup.shortdef[0] }}
+        </ng-template>
+      </ng-container>
+    </ng-container>
+    <ng-template #errorBlock>
+      Result not found. <br> {{ this.definition | json }}
+    </ng-template>
+  </mat-card-content>
+</mat-card>

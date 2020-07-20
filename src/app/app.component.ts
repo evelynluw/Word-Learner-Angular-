@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'word-learner-angular';
+export class AppComponent implements OnInit {
+
+  word: string = "Lorem";
+
+  ngOnInit() { }
+
+  getWord(word: string) {
+    this.word = word;
+  }
 }

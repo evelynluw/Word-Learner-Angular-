@@ -1,0 +1,13 @@
+<form class="input" (submit)="submitWord()">
+  <mat-form-field class="input__field" appearance="standard">
+    <mat-label>Input Word</mat-label>
+    <input matInput [formControl]="word">
+    <button mat-button *ngIf="word.valid" (click)="word.reset()" type="button" matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <div>
+    <button class="input__button" mat-raised-button color="primary" type="submit"
+      [disabled]="word.invalid">Look Up</button>
+  </div>
+</form>
